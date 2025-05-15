@@ -1,0 +1,56 @@
+<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+  <img src="" alt="Logo STOCKC2" class="w-52" />
+
+  <p class="text-lg text-gray-600 my-10 text-center">
+    ¡Bienvenido a STOCKC2! Por favor, inicia sesión.
+  </p>
+
+<form [formGroup]="loginForm" (ngSubmit)="login($event)" class="flex flex-col items-center bg-light p-8 rounded shadow-md w-full max-w-md mx-auto">
+
+  <!-- Título -->
+  <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Iniciar sesión</h2>
+
+  <!-- Campo Correo Electrónico -->
+  <input
+  type="email"
+  formControlName="email"
+  placeholder="Correo electrónico"
+  class="w-full mb-2 p-2 rounded-full bg-purple-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-300"
+/>
+
+<!-- Validación del correo -->
+<div *ngIf="email?.touched && email?.invalid" class="text-delete text-sm mb-4">
+  <div *ngIf="email?.errors?.['required'] && !email?.errors?.['email']">
+    El correo es obligatorio.
+  </div>
+  <div *ngIf="email?.errors?.['email'] && !email?.errors?.['required']">
+    Formato de correo no válido.
+  </div>
+</div>
+
+  <!-- Campo Contraseña -->
+  <input
+  type="password"
+  formControlName="password"
+  placeholder="Contraseña"
+  class="w-full mb-2 p-2 rounded-full bg-purple-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-300"
+/>
+
+  <!-- Validación de la contraseña -->
+  <div *ngIf="password?.touched && password?.invalid" class="text-red-500 text-sm mb-4">
+    La contraseña es obligatoria.
+  </div>
+
+  <!-- Botón de envío -->
+  <button
+  type="submit"
+  [disabled]="loginForm.invalid"
+  class="w-40 h-10 rounded-3xl bg-purple-600 text-light hover:tracking-wider duration-300 disabled:opacity-50"
+>
+  Entrar
+</button>
+
+
+</form>
+
+</div>

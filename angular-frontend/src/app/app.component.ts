@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { LoginComponent } from './components/login/login.component'
+import { LandingComponent } from './components/landing/landing.component';
+
+
+
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [ NgFor, NgIf, RouterOutlet, LoginComponent, LandingComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'angular-frontend';
+  
 }
