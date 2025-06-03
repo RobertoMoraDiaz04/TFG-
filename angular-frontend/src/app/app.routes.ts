@@ -5,14 +5,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { MenComponent } from './components/men/men.component';
 import { WomenComponent } from './components/women/women.component';
 import { KidComponent } from './components/kid/kid.component';
-import { GlobalComponent } from './components/global/global .component';
+import { AuthService } from './services/auth.service';
 
 export const routes: Routes = [
-  { path: "", component: LoginComponent},
-  { path: "register", component: RegisterComponent},
-  { path: "landing", component: LandingComponent},
-  { path: "men" , component: MenComponent},
-  { path: "women" , component: WomenComponent},
-  { path: "kid" , component: KidComponent},
-  { path: "global" , component: GlobalComponent}
+  { path: "login", component: LoginComponent }, 
+  { path: "", redirectTo: "/login", pathMatch: "full" }, 
+  { path: "register", component: RegisterComponent },
+  { path: "landing", component: LandingComponent },
+  { path: "men", component: MenComponent },
+  { path: "women", component: WomenComponent },
+  { path: "kid", component: KidComponent },
+  { path: "**", redirectTo: "/login" } 
 ];
