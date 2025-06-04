@@ -1,13 +1,32 @@
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../services/product.service';
 import { Router, RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-Landing',
-  standalone: true,
+  selector: 'app-landing',
+  templateUrl: './landing.component.html',
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-   templateUrl: './landing.component.html',
 })
+export class LandingComponent implements OnInit {
+  products: Product[] = [];
 
-export class LandingComponent {}
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.loadProducts();
+
+    this.productService.productAdded$.subscribe(() => {
+      this.loadProducts();
+    });
+  }
+
+  loadProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (data) => this.products = data,
+      error: (err) => console.error(err)
+    });
+  }
+}

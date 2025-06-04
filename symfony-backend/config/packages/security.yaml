@@ -34,9 +34,16 @@ security:
             jwt: ~
 
     access_control:
-        # Permitir acceso público al login y registro
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api/register, roles: PUBLIC_ACCESS }
+    # Público
+    - { path: ^/api/login, roles: PUBLIC_ACCESS }
+    - { path: ^/api/register, roles: PUBLIC_ACCESS }
 
-        # Proteger el resto de /api con autenticación completa
-        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+    # Solo admins pueden POST /api/products
+    - { path: ^/api/products$, roles: ROLE_ADMIN, methods: [POST] }
+
+    # Público puede ver productos
+    - { path: ^/api/products$, roles: PUBLIC_ACCESS, methods: [GET] }
+
+    # Todo lo demás en /api requiere autenticación
+    - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+

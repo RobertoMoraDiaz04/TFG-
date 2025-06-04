@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -37,5 +38,22 @@ class ProductController extends AbstractController
                 'image' => $product->getImage(),
             ]
         ], 201);
+    }
+
+    #[Route('/api/products', name: 'get_products', methods: ['GET'])]
+    public function getProducts(ProductRepository $productRepository): JsonResponse
+    {
+        $products = $productRepository->findAll();
+
+        $data = array_map(function (Product $product) {
+            return [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'image' => $product->getImage(),
+            ];
+        }, $products);
+
+        return new JsonResponse($data);
     }
 }
