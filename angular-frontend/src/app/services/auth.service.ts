@@ -12,6 +12,13 @@ export class AuthService {
     return this.http.post<{ token: string }>(this.loginUrl, { email, password });
   }
 
+  register(email: string, password: string) {
+    return this.http.post<{ message: string }>('http://localhost:8000/api/register', {
+      email,
+      password
+    });
+  }
+
   saveToken(token: string): void {
     localStorage.setItem('jwt_token', token);
   }
