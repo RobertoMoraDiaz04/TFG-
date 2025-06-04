@@ -1,19 +1,30 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { RegisterComponent } from './components/register/register.component';
-import { MenComponent } from './components/men/men.component';
-import { WomenComponent } from './components/women/women.component';
-import { KidComponent } from './components/kid/kid.component';
-import { AuthService } from './services/auth.service';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: "login", component: LoginComponent }, 
-  { path: "", redirectTo: "/login", pathMatch: "full" }, 
-  { path: "register", component: RegisterComponent },
-  { path: "landing", component: LandingComponent },
-  { path: "men", component: MenComponent },
-  { path: "women", component: WomenComponent },
-  { path: "kid", component: KidComponent },
-  { path: "**", redirectTo: "/login" } 
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./components/login/login.component').then(m => m.LoginComponent),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./components/register/register.component').then(m => m.RegisterComponent),
+  },
+  {
+    path: 'landing',
+    loadComponent: () =>
+      import('./components/landing/landing.component').then(m => m.LandingComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: '',
+    redirectTo: 'landing',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'landing'
+  }
 ];

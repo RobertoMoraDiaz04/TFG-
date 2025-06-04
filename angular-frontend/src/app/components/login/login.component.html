@@ -50,6 +50,14 @@
       Entrar
     </button>
 
+    <!-- Enlace a registro -->
+    <p class="mt-4 text-sm text-gray-600">
+      ¿No tienes cuenta?
+      <a routerLink="/register" class="text-purple-600 hover:underline font-semibold">
+        Regístrate aquí
+      </a>
+    </p>
+
     <!-- Error general de login -->
     <div *ngIf="error" class="text-red-500 mt-4 text-sm text-center w-full">
       {{ error }}
