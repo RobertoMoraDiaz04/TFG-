@@ -19,6 +19,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+  path: 'add',
+  loadComponent: () => import('./components/add/add.component').then(m => m.AddComponent),
+  canActivate: [authGuard], 
+  },
+  {
     path: '',
     redirectTo: 'landing',
     pathMatch: 'full'

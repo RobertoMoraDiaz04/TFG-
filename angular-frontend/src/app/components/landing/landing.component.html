@@ -1,4 +1,4 @@
-  <!-- Header -->
+<!-- Header -->
 <header class="flex items-center justify-between px-6 py-4 shadow bg-white sticky top-0 z-50">
   <h1 class="text-2xl font-bold text-purple-600">STOCKC2</h1>
 
@@ -32,52 +32,58 @@
   </form>
 </header>
 
-  <section class="text-center py-20 bg-gray-100">
-    <h2 class="text-4xl font-bold mb-4">Compra lo ultimo en el mercado de sneakers</h2>
-    <p class="text-gray-600 mb-6 text-lg">Marketplace de sneakers y moda urbana.</p>
-    <button class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition">
-      Añadir pruducto
-    </button>
-  </section>
+<!-- Hero Section -->
+<section class="text-center py-20 bg-gray-100">
+  <h2 class="text-4xl font-bold mb-4">Compra lo ultimo en el mercado de sneakers</h2>
+  <p class="text-gray-600 mb-6 text-lg">Marketplace de sneakers y moda urbana.</p>
+  <button    
+      routerLink="/add"
+      class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition"
+    >
+      Añadir producto 
+  </button>
+</section>
 
-  <!-- Productos destacados -->
-  <section class="py-12 px-6 max-w-7xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-8">Tendencias</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      <!-- Bloque De Productos -->
-      <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/57558712-5ebe-4abb-9984-879f9e896b4c/W+AIR+FORCE+1+%2707+FLYEASE.png" alt="Air Force 1 Low" class="w-full object-cover">
-        <div class="p-4">
-          <h4 class="font-semibold text-lg">Air Force 1 Low</h4>
-          <p class="text-gray-500 text-sm">Desde $120</p>
-        </div>
-      </div>
-      <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f9j2xztqk9bn0ixns8ne/W+NIKE+SHOX+TL.png" alt="Nike Shox TL" class="w-full object-cover">
-        <div class="p-4">
-          <h4 class="font-semibold text-lg">Nike Shox TL</h4>
-          <p class="text-gray-500 text-sm">Desde $190</p>
-        </div>
-      </div>
-      <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/75090a57-9388-40fc-95db-2a7e1eed3d02/NIKE+AIR+MAX+PLUS+UTILITY.png" alt="Nike Air Max Plus Utility" class="w-full object-cover">
-        <div class="p-4">
-          <h4 class="font-semibold text-lg">Nike Air Max Plus Utility</h4>
-          <p class="text-gray-500 text-sm">Desde $190</p>
-        </div>
-      </div>
-      <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/7b5a0641-6577-4040-82bf-5f2822b81424/air-jordan-13-low-singles-day-dm0803-300-release-date.jpg" alt="Air Jordan 13 Low" class="w-full object-cover">
-        <div class="p-4">
-          <h4 class="font-semibold text-lg">Air Jordan 13 Low</h4>
-          <p class="text-gray-500 text-sm">Desde $200</p>
-        </div>
+<!-- Productos destacados -->
+<section class="py-12 px-6 max-w-7xl mx-auto">
+  <h3 class="text-2xl font-semibold mb-8">Tendencias</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <!-- Producto 1 -->
+    <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+      <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/57558712-5ebe-4abb-9984-879f9e896b4c/W+AIR+FORCE+1+%2707+FLYEASE.png" alt="Air Force 1 Low" class="w-full object-cover">
+      <div class="p-4">
+        <h4 class="font-semibold text-lg">Air Force 1 Low</h4>
+        <p class="text-gray-500 text-sm">Desde $120</p>
       </div>
     </div>
-  </section>
+    <!-- Producto 2 -->
+    <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+      <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f9j2xztqk9bn0ixns8ne/W+NIKE+SHOX+TL.png" alt="Nike Shox TL" class="w-full object-cover">
+      <div class="p-4">
+        <h4 class="font-semibold text-lg">Nike Shox TL</h4>
+        <p class="text-gray-500 text-sm">Desde $190</p>
+      </div>
+    </div>
+    <!-- Producto 3 -->
+    <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+      <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/75090a57-9388-40fc-95db-2a7e1eed3d02/NIKE+AIR+MAX+PLUS+UTILITY.png" alt="Nike Air Max Plus Utility" class="w-full object-cover">
+      <div class="p-4">
+        <h4 class="font-semibold text-lg">Nike Air Max Plus Utility</h4>
+        <p class="text-gray-500 text-sm">Desde $190</p>
+      </div>
+    </div>
+    <!-- Producto 4 -->
+    <div class="border rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+      <img src="https://static.nike.com/a/images/w_1280,q_auto,f_auto/7b5a0641-6577-4040-82bf-5f2822b81424/air-jordan-13-low-singles-day-dm0803-300-release-date.jpg" alt="Air Jordan 13 Low" class="w-full object-cover">
+      <div class="p-4">
+        <h4 class="font-semibold text-lg">Air Jordan 13 Low</h4>
+        <p class="text-gray-500 text-sm">Desde $200</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 py-10">
-    &copy; 2025 STOCKC2. Todos los derechos reservados.
-  </footer>
-
+<!-- Footer -->
+<footer class="text-center text-sm text-gray-500 py-10">
+  &copy; 2025 STOCKC2. Todos los derechos reservados.
+</footer>
