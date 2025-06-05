@@ -78,4 +78,6 @@ export class LandingComponent implements OnInit {
   onProductDeleted(): void {
   this.loadProducts(); 
   }
+  isLoading = false;
+
 }
