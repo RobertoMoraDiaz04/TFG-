@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductService, Product } from '../../services/product.service';
 import { ViewModalComponent } from "./modals/view.modal";
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-landing',
@@ -28,6 +30,23 @@ export class LandingComponent implements OnInit {
     this.productService.productAdded$.subscribe(() => {
       this.loadProducts();
     });
+
+    this.searchForm.get('q')?.valueChanges
+      .pipe(
+        debounceTime(300),          
+        distinctUntilChanged()      
+      )
+      .subscribe((term: string) => {
+        const trimmed = term.trim();
+        if (trimmed) {
+          this.productService.searchProducts(trimmed).subscribe({
+            next: (results) => this.products = results,
+            error: (err) => console.error(err)
+          });
+        } else {
+          this.loadProducts(); 
+        }
+      });
   }
 
   loadProducts(): void {

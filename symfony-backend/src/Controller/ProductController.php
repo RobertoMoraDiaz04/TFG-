@@ -45,9 +45,19 @@ class ProductController extends AbstractController
     }
 
     #[Route('/api/products', name: 'get_products', methods: ['GET'])]
-    public function getProducts(ProductRepository $productRepository): JsonResponse
+    public function getProducts(Request $request, ProductRepository $productRepository): JsonResponse
     {
-        $products = $productRepository->findAll();
+        $search = $request->query->get('search');
+
+        if ($search) {
+            $products = $productRepository->createQueryBuilder('p')
+                ->where('LOWER(p.name) LIKE :term')
+                ->setParameter('term', '%' . strtolower($search) . '%')
+                ->getQuery()
+                ->getResult();
+        } else {
+            $products = $productRepository->findAll();
+        }
 
         $data = array_map(function (Product $product) {
             return [
@@ -62,6 +72,7 @@ class ProductController extends AbstractController
 
         return new JsonResponse($data);
     }
+
 
     #[Route('/api/products/{id}', name: 'update_product', methods: ['PATCH'])]
     public function updateProduct(Request $request, Product $product, EntityManagerInterface $em): JsonResponse
