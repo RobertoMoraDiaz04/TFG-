@@ -25,13 +25,8 @@ class ProductController extends AbstractController
         $product->setName($data['name']);
         $product->setPrice((float) $data['price']);
         $product->setImage($data['image']);
-
-        if (isset($data['talla'])) {
-            $product->setTalla($data['talla']);
-        }
-        if (isset($data['disponible'])) {
-            $product->setDisponible((bool) $data['disponible']);
-        }
+        $product->setTalla($data['talla'] ?? null);
+        $product->setDisponible($data['disponible'] ?? true);
 
         $em->persist($product);
         $em->flush();
@@ -67,4 +62,31 @@ class ProductController extends AbstractController
 
         return new JsonResponse($data);
     }
+
+    #[Route('/api/products/{id}', name: 'update_product', methods: ['PATCH'])]
+    public function updateProduct(Request $request, Product $product, EntityManagerInterface $em): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if (isset($data['disponible'])) {
+            $product->setDisponible((bool) $data['disponible']);
+        }
+
+        $em->flush();
+
+        return new JsonResponse(['message' => 'Producto actualizado']);
+    }
+    #[Route('/api/products/{id}', name: 'get_product', methods: ['GET'])]
+    public function getProduct(Product $product): JsonResponse
+    {
+        return new JsonResponse([
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'image' => $product->getImage(),
+            'talla' => $product->getTalla(),
+            'disponible' => $product->isDisponible(),
+        ]);
+    }
 }
+

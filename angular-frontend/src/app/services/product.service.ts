@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 export interface Product {
+  id?: number;
   name: string;
   price: number;
   image: string;
