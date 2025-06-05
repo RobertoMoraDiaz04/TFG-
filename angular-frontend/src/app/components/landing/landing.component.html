@@ -83,4 +83,6 @@
   *ngIf="selectedProduct"
   [product]="selectedProduct"
   (close)="closeModal()"
+  (deleted)="onProductDeleted()"
 ></app-view-modal>
+

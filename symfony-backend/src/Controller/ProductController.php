@@ -72,21 +72,26 @@ class ProductController extends AbstractController
             $product->setDisponible((bool) $data['disponible']);
         }
 
+        if (isset($data['price'])) {
+            $product->setPrice((float) $data['price']);
+        }
+
+        if (isset($data['talla'])) {
+            $product->setTalla($data['talla']);
+        }
+
         $em->flush();
 
         return new JsonResponse(['message' => 'Producto actualizado']);
     }
-    #[Route('/api/products/{id}', name: 'get_product', methods: ['GET'])]
-    public function getProduct(Product $product): JsonResponse
+    #[Route('/api/products/{id}', name: 'delete_product', methods: ['DELETE'])]
+    public function deleteProduct(Product $product, EntityManagerInterface $em): JsonResponse
     {
-        return new JsonResponse([
-            'id' => $product->getId(),
-            'name' => $product->getName(),
-            'price' => $product->getPrice(),
-            'image' => $product->getImage(),
-            'talla' => $product->getTalla(),
-            'disponible' => $product->isDisponible(),
-        ]);
+        $em->remove($product);
+        $em->flush();
+
+        return new JsonResponse(['message' => 'Producto eliminado']);
     }
+
 }
 

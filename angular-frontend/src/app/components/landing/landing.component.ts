@@ -56,4 +56,7 @@ export class LandingComponent implements OnInit {
   closeModal(): void {
     this.selectedProduct = null;
   }
+  onProductDeleted(): void {
+  this.loadProducts(); 
+  }
 }
