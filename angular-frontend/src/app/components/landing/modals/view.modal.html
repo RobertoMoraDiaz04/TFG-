@@ -1,0 +1,63 @@
+<!-- src/app/view-modal/view-modal.component.html -->
+<div
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+  (click)="onClose()"
+>
+  <div
+    class="bg-white rounded-2xl shadow-lg w-11/12 max-w-lg mx-auto"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- Header del modal -->
+    <div class="flex justify-between items-center border-b px-4 py-2">
+      <h3 class="text-xl font-semibold">{{ product?.name }}</h3>
+      <button
+        class="text-gray-500 hover:text-red-600"
+        aria-label="Cerrar modal"
+        (click)="onClose()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="h-6 w-6"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Cuerpo del modal -->
+    <div class="p-4 space-y-4">
+      <!-- Imagen ampliada -->
+      <img
+        [src]="product?.image"
+        [alt]="product?.name"
+        class="w-full h-72 object-cover rounded-lg"
+        loading="lazy"
+      />
+
+      <p class="text-gray-700">
+        <span class="font-semibold">Precio:</span> ${{ product?.price }}
+      </p>
+      <p class="text-gray-700">
+        <span class="font-semibold">Talla:</span> {{ product?.talla }}
+      </p>
+      <p class="text-gray-700">
+        <span class="font-semibold">Disponible:</span>
+        {{ product?.disponible ? 'Sí' : 'No' }}
+      </p>
+    </div>
+
+    <!-- Pie del modal -->
+    <div class="px-4 py-2 border-t flex justify-end">
+      <button
+        class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition"
+        (click)="onClose()"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
