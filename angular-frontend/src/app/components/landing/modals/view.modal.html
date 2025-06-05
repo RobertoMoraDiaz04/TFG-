@@ -42,21 +42,34 @@
         <span class="font-semibold">Precio:</span> ${{ product?.price }}
       </p>
       <p class="text-gray-700">
-        <span class="font-semibold">Talla:</span> {{ product?.talla }}
+        <span class="font-semibold">Talla:</span> {{ product?.talla || 'Sin especificar' }}
       </p>
-      <p class="text-gray-700">
-        <span class="font-semibold">Disponible:</span>
-        {{ product?.disponible ? 'Sí' : 'No' }}
-      </p>
+
+      <!-- Checkbox de disponibilidad -->
+      <label class="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          [(ngModel)]="product!.disponible"
+          class="form-checkbox text-purple-600 h-5 w-5"
+        />
+        <span class="text-gray-700 font-medium">Disponible</span>
+      </label>
     </div>
 
     <!-- Pie del modal -->
-    <div class="px-4 py-2 border-t flex justify-end">
+    <div class="px-4 py-3 border-t flex justify-between">
       <button
-        class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition"
+        class="bg-gray-300 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-400 transition"
         (click)="onClose()"
       >
-        Cerrar
+        Cancelar
+      </button>
+
+      <button
+        class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition"
+        (click)="guardarCambios()"
+      >
+        Guardar cambios
       </button>
     </div>
   </div>
