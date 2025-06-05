@@ -23,6 +23,7 @@ export class AddComponent {
       name: ['', Validators.required],
       price: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       image: ['', Validators.required],
+      talla: []
     });
   }
 

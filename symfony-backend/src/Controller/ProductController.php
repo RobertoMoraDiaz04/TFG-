@@ -26,6 +26,13 @@ class ProductController extends AbstractController
         $product->setPrice((float) $data['price']);
         $product->setImage($data['image']);
 
+        if (isset($data['talla'])) {
+            $product->setTalla($data['talla']);
+        }
+        if (isset($data['disponible'])) {
+            $product->setDisponible((bool) $data['disponible']);
+        }
+
         $em->persist($product);
         $em->flush();
 
@@ -36,6 +43,8 @@ class ProductController extends AbstractController
                 'name' => $product->getName(),
                 'price' => $product->getPrice(),
                 'image' => $product->getImage(),
+                'talla' => $product->getTalla(),
+                'disponible' => $product->isDisponible(),
             ]
         ], 201);
     }
@@ -51,6 +60,8 @@ class ProductController extends AbstractController
                 'name' => $product->getName(),
                 'price' => $product->getPrice(),
                 'image' => $product->getImage(),
+                'talla' => $product->getTalla(),
+                'disponible' => $product->isDisponible(),
             ];
         }, $products);
 
